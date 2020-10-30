@@ -1,31 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class AddTodo extends Component {
-    state = {
-        content: ''
-    }
-    handleChange = (e) => {
-        this.setState({
-            content: e.target.value
-        })
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.addTodo(this.state);
-        this.setState({
-            content: ''
-        })
-    }
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>add  todo</label>
-                    <input type='text' onChange={this.handleChange} value={this.state.content} />
-                </form>
-            </div>
-        )
-    }
+const AddTodo=({content, addTodo, onChange})=>{
+    return(
+        <div>
+        <input type ='text' value={content} onChange={onChange} />
+        <button type='button' onClick={addTodo} >add</button>
+      </div>
+    )
 }
 
 export default AddTodo
